@@ -13,6 +13,7 @@ pipeline {
        }
      }
 
+
      stage('Release'){
        when {
          expression { env.TAG_NAME ==~ ".*" }
