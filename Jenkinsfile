@@ -12,9 +12,9 @@ pipeline {
 
      stage('Release'){
        steps {
+         sh 'env'
          echo 'CI'
        }
      }
-
    }
 }
