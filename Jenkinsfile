@@ -1,7 +1,6 @@
 pipeline {
    agent { label 'workstation' }
 
-
    stages {
 
      stage('code quality'){
