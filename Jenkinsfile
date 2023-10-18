@@ -36,12 +36,13 @@ pipeline {
      }
 
      stage('Release'){
-       when {
-         expression { env.TAG_NAME ==~ ".*" }
-       }
-       steps {
-         echo 'CI'
-       }
+        when {
+          expression { env.TAG_NAME ==~ ".*" }
+        }
+        steps {
+          sh 'zip -r frontend-${TAG_NAME}.zip static asset-manifest.json index.html robots.txt'
+          sh 'curl -sSf -u "admin:Admin123" -X PUT -T frontend-${TAG_NAME}.zip "http://artifactory.ayeeshadevops75.online:8081/artifactory/frontend/frontend-${TAG_NAME}.zip"'
+        }
      }
 
    }
